@@ -1,0 +1,21 @@
+{
+  "name"         : "baaa-timetable",
+  "version"      : "0.0.1",
+  "description"  : "Scrapper for timetable from schemasys at BAAA.",
+  "main"         : "app.js",
+  "author"       : "Martin Proks",
+  "licence"      : "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matq007/baaa.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matq007/baaa/issues"
+  },
+  "homepage": "https://github.com/matq007/baaa/tree/master/timetable",
+  "dependencies" : {
+    "express"    : "latest",
+    "request"    : "latest",
+    "cheerio"    : "latest"
+  }
+}
