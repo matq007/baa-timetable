@@ -16,6 +16,7 @@
   "dependencies" : {
     "express"    : "latest",
     "request"    : "latest",
-    "cheerio"    : "latest"
+    "cheerio"    : "latest",
+    "moment"     : "latest"
   }
 }
