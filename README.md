@@ -19,3 +19,11 @@ npm install
 ```
 node app.js
 ```
+
+## More commands
+```
+node app.js today
+node app.js week
+node app.js from <DD-MM-YYYY> to <DD-MM-YYYY>
+node app.js help
+```
