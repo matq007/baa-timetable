@@ -132,6 +132,18 @@ var Timetable = function (urls, subjects) {
 
     };
 
+    timetable.tomorrow = function () {
+
+        var tomorrow = moment().add(1, 'days').format("DD-MM-YYYY");
+
+        if (timetable.data[tomorrow] !== undefined) { 
+            return timetable.data[tomorrow];
+        }
+
+        return "No class tomorrow! Hurraay ^-^";
+
+    };
+
     timetable.duration = function (start, end) {
 
         var i;
@@ -168,6 +180,12 @@ var Timetable = function (urls, subjects) {
             if (args[2] === "today") {
                 timetable.getData().then(function () {
                     timetable.print(timetable.today());
+                });
+            }
+
+            if (args[2] === "tomorrow") {
+                timetable.getData().then(function () {
+                    timetable.print(timetable.tomorrow());
                 });
             }
 
