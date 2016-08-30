@@ -6,7 +6,7 @@
   "author": "Martin Proks",
   "licence": "ISC",
   "scripts": {
-    "test": "istanbul cover ./node_modules/.bin/mocha --reporter spec -- -R spec && codecov"
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "istanbul": "^0.4.5",
     "mocha": "^3.0.2"
   }
 }
