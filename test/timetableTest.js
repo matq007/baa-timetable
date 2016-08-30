@@ -1,6 +1,5 @@
 /*global require, Promise, process, console */
 var expect = require("chai").expect;
-var assert = require("chai").assert;
 var moment = require("moment");
 var Timetable = require("../timetable");
 var Subject = require("../subject");
@@ -24,12 +23,12 @@ describe("Timetable", function() {
     
     it("Contains: should return true", function() {
         var s = new Subject("30-08-2016", "08:30", "Large Systems");
-        assert.strictEqual(t.contains(s.name), true);
+        expect(t.contains(s.name)).to.be.true;
     });
 
     it("Contains: should return false", function() {
         var s = new Subject("30-08-2016", "08:30", "Tests");
-        assert.strictEqual(t.contains(s.name), false);
+        expect(t.contains(s.name)).to.be.false;
     });
 
     it("Merge: should return empty list", function() {
