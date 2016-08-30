@@ -1,4 +1,4 @@
-# baa-timetable
+# baa-timetable [![Build Status](https://travis-ci.org/matq007/baa-timetable.svg?branch=master)](https://travis-ci.org/matq007/baa-timetable)
 
 Scrapper for timetable at BAAA skemasys. To customize links to timetable please
 update the variable *urls*. To update subjects edit variable *subjects* 
