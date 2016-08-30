@@ -24,6 +24,12 @@ node app.js
 ```
 node app.js today
 node app.js week
+node app.js next week
 node app.js from <DD-MM-YYYY> to <DD-MM-YYYY>
 node app.js help
+```
+
+## Run test
+```
+npm test
 ```
