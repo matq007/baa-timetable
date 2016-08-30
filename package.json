@@ -1,22 +1,29 @@
 {
-  "name"         : "baaa-timetable",
-  "version"      : "0.0.1",
-  "description"  : "Scrapper for timetable from schemasys at BAAA.",
-  "main"         : "app.js",
-  "author"       : "Martin Proks",
-  "licence"      : "ISC",
+  "name": "baaa-timetable",
+  "version": "0.0.1",
+  "description": "Scrapper for timetable from schemasys at BAAA.",
+  "main": "app.js",
+  "author": "Martin Proks",
+  "licence": "ISC",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/matq007/baaa.git"
+    "url": "https://github.com/matq007/baa-timetable.git"
   },
   "bugs": {
-    "url": "https://github.com/matq007/baaa/issues"
+    "url": "https://github.com/matq007/baa-timetable/issues"
   },
-  "homepage": "https://github.com/matq007/baaa/tree/master/timetable",
-  "dependencies" : {
-    "express"    : "latest",
-    "request"    : "latest",
-    "cheerio"    : "latest",
-    "moment"     : "latest"
+  "homepage": "https://github.com/matq007/baa-timetable/",
+  "dependencies": {
+    "cheerio": "latest",
+    "express": "latest",
+    "moment": "latest",
+    "request": "latest"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
   }
 }
