@@ -201,7 +201,9 @@ var Timetable = function (urls, subjects) {
             }
 
             if (args[2] === "today") {
-                timetable.print(timetable.today());
+                timetable.getData().then(function () {
+                    timetable.print(timetable.today());
+                });
             }
 
             if (args[2] === "tomorrow") {
