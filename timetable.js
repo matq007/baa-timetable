@@ -34,14 +34,14 @@ var Timetable = function (urls, subjects) {
 
     timetable.merge = function (data) {
         var result = {};
-        var i = 0;
+        var i;
+        var j;
         var key;
-        var item;
         for (i = 0; i < data.length; i += 1) {
             for (key in data[i]) {
                 if (result[key] !== undefined) {
-                    for (item in data[i][key]) {
-                        result[key].push(data[i][key][item]);
+                    for (j = 0; j < data[i][key].length; j += 1) {
+                        result[key].push(data[i][key][j]);
                     }
                 } else {
                     result[key] = data[i][key];
@@ -147,6 +147,7 @@ var Timetable = function (urls, subjects) {
     timetable.duration = function (start, end) {
 
         var i;
+        var j;
         var index;
         var result = [];
 
@@ -157,9 +158,9 @@ var Timetable = function (urls, subjects) {
         for (i = start; i.isBefore(end); i.add(1, "days")) {
             index = i.format("DD-MM-YYYY");
             if (timetable.data[index] !== undefined) {
-                timetable.data[index].forEach(function (item) {
-                    result.push(item);
-                });
+                for (j = 0; j < timetable.data[index].length; j += 1) {
+                    result.push(timetable.data[index][j]);
+                }
             }
         }
 
@@ -167,6 +168,8 @@ var Timetable = function (urls, subjects) {
     };
 
     timetable.process = function (args) {
+        var start;
+        var end;
 
         if (args.length < 3) {
             timetable.getData().then(function (res) {
@@ -178,9 +181,7 @@ var Timetable = function (urls, subjects) {
             }
 
             if (args[2] === "today") {
-                timetable.getData().then(function () {
-                    timetable.print(timetable.today());
-                });
+                timetable.print(timetable.today());
             }
 
             if (args[2] === "tomorrow") {
@@ -190,8 +191,8 @@ var Timetable = function (urls, subjects) {
             }
 
             if (args[2] === "week") {
-                var start = moment().startOf("isoWeek");
-                var end = moment().endOf("isoWeek");
+                start = moment().startOf("isoWeek");
+                end = moment().endOf("isoWeek");
 
                 timetable.getData().then(function () {
                     timetable.print(timetable.duration(start, end));
@@ -199,8 +200,8 @@ var Timetable = function (urls, subjects) {
             }
 
             if (args[2] === "next" && args[3] === "week") {
-                var start = moment(moment().endOf("isoWeek")).add(1, "days").startOf("isoWeek");
-                var end = moment(moment().endOf("isoWeek")).add(1, "days").endOf("isoWeek");
+                start = moment(moment().endOf("isoWeek")).add(1, "days").startOf("isoWeek");
+                end = moment(moment().endOf("isoWeek")).add(1, "days").endOf("isoWeek");
 
                 timetable.getData().then(function () {
                     timetable.print(timetable.duration(start, end));
@@ -208,8 +209,8 @@ var Timetable = function (urls, subjects) {
             }
 
             if (args[2] === "from" && args[4] === "to") {
-                var start = moment(args[3], "DD-MM-YYYY");
-                var end = moment(args[5], "DD-MM-YYYY");
+                start = moment(args[3], "DD-MM-YYYY");
+                end = moment(args[5], "DD-MM-YYYY");
 
                 timetable.getData().then(function () {
                     timetable.print(timetable.duration(start, end));
