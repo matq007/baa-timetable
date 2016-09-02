@@ -120,6 +120,18 @@ var Timetable = function (urls, subjects) {
         }
     };
 
+    timetable.yesterday = function () {
+
+        var yesterday = moment().add(-1, 'days').format("DD-MM-YYYY");
+
+        if (timetable.data[yesterday] !== undefined) { 
+            return timetable.data[yesterday];
+        }
+
+        return "No class today! Hurraay ^-^";
+
+    };
+
     timetable.today = function () {
 
         var today = moment().format("DD-MM-YYYY");
@@ -175,9 +187,17 @@ var Timetable = function (urls, subjects) {
             timetable.getData().then(function (res) {
                 console.log(res);
             });
-        } else {
+        } 
+        
+        if (args.length === 3) {
             if (args[2] === "help") {
-                console.log("Usage: node app.js [today, week, from <DD-MM-YYYY> to <DD-MM-YYYY>]");
+                console.log("Usage: node app.js [yesterday, today, tomorrow, this week, next week, from <DD-MM-YYYY> to <DD-MM-YYYY>]");
+            }
+
+            if (args[2] === "yesterday") {
+                timetable.getData().then(function () {
+                    timetable.print(timetable.yesterday());
+                });
             }
 
             if (args[2] === "today") {
@@ -189,29 +209,26 @@ var Timetable = function (urls, subjects) {
                     timetable.print(timetable.tomorrow());
                 });
             }
+        }
+        
+        if (args.length > 3) {
 
-            if (args[2] === "week") {
+            if (args[2] === "this" && args[3] === "week") {
                 start = moment().startOf("isoWeek");
                 end = moment().endOf("isoWeek");
-
-                timetable.getData().then(function () {
-                    timetable.print(timetable.duration(start, end));
-                });
             }
 
             if (args[2] === "next" && args[3] === "week") {
                 start = moment(moment().endOf("isoWeek")).add(1, "days").startOf("isoWeek");
                 end = moment(moment().endOf("isoWeek")).add(1, "days").endOf("isoWeek");
-
-                timetable.getData().then(function () {
-                    timetable.print(timetable.duration(start, end));
-                });
             }
 
             if (args[2] === "from" && args[4] === "to") {
                 start = moment(args[3], "DD-MM-YYYY");
                 end = moment(args[5], "DD-MM-YYYY");
+            }
 
+            if (start !== undefined && end !== undefined) {
                 timetable.getData().then(function () {
                     timetable.print(timetable.duration(start, end));
                 });
