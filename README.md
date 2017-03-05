@@ -1,8 +1,7 @@
 # baa-timetable [![Build Status](https://travis-ci.org/matq007/baa-timetable.svg?branch=master)](https://travis-ci.org/matq007/baa-timetable) [![Code Climate](https://codeclimate.com/github/matq007/baa-timetable/badges/gpa.svg)](https://codeclimate.com/github/matq007/baa-timetable)
 
-Scrapper for timetable at BAAA skemasys. To customize links to timetable please
-update the variable *urls*. To update subjects edit variable *subjects* 
-in _app.js_.
+Scrapper for skemasys timetable at BAAA. First update all urls you want to scrap in app.js. Next update subject names (copy-paste the names).
+After this you are good to go.
 
 ## Requirements
 
